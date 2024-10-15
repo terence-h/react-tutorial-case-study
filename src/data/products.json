@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "name": "Dell XPS 13",
+        "specifications": {
+            "cpu": "Intel Core i7-1165G7",
+            "ram": "16GB RAM DDR5", 
+            "storage": "512GB SSD",
+            "display": "13.3-inch FHD+ (1920x1200)",
+            "gpu": "Intel Iris Xe Graphics",
+            "os": "Windows 11"
+        },
+        "price": 1399.00,
+        "category": "windows",
+        "path": "/images/dell-xps-13.jpg"
+    },
+    {
+        "id": 2,
+        "name": "HP Spectre x360",
+        "specifications": {
+            "cpu": "Intel Core Ultra 7 155H",
+            "ram": "16GB RAM DDR5", 
+            "storage": "1TB SSD",
+            "display": "13.3-inch 2.5K (2880x1800) OLED touchscreen",
+            "gpu": "Intel® Arc™ graphics",
+            "os": "Windows 11"
+        },
+        "price": 2079.00,
+        "category": "windows",
+        "path": "/images/hp-spectre-x360.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Lenovo ThinkPad X1 Carbon G12",
+        "specifications": {
+            "cpu": "Intel Core Ultra 7 155U",
+            "ram": "32GB RAM DDR5", 
+            "storage": "1TB SSD",
+            "display": "14-inch WUXGA (1920x1200)",
+            "gpu": "Intel® Arc™ graphics",
+            "os": "Windows 11 Pro"
+        },
+        "price": 2961.00,
+        "category": "windows",
+        "path": "/images/lenovo-thinkpad-x1-carbon-g12.jpg"
+    },
+    {
+        "id": 4,
+        "name": "MacBook Air M3",
+        "specifications": {
+            "cpu": "Apple M3 chip with 8-core CPU",
+            "ram": "8GB Unified Memory", 
+            "storage": "256GB SSD",
+            "display": "13.6-inch Retina (2560x1664)",
+            "gpu": "8-core GPU",
+            "os": "macOS 15 Sequoia"
+        },
+        "price": 1599.00,
+        "category": "macos",
+        "path": "/images/mba-m3.jpeg"
+    },
+    {
+        "id": 5,
+        "name": "MacBook Pro M3 Pro",
+        "specifications": {
+            "cpu": "Apple M3 Pro chip with 11-core CPU",
+            "ram": "18GB Unified Memory", 
+            "storage": "512GB SSD",
+            "display": "14-inch Liquid Retina XDR (3024x1964)",
+            "gpu": "14-core GPU",
+            "os": "macOS 15 Sequoia"
+        },
+        "price": 2925.50,
+        "category": "macos",
+        "path": "/images/mbp-m3.jpeg"
+    }
+]
