@@ -12,7 +12,7 @@ export default function Cart() {
     if (!loggedIn) {
         return (
             <div className="container mx-auto text-center">
-                <h1 className="text-3xl font-bold">Your need to be logged in to access the cart</h1>
+                <h1 className="text-3xl font-bold">You need to be logged in to access the cart</h1>
             </div>
         );
     } else if (cart.length === 0) {
