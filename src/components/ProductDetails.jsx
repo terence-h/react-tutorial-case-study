@@ -17,7 +17,6 @@ export default function ProductDetails({ id, name, specifications, price, path }
     const maxQuantity = currentItem ? 5 - currentItem.quantity : 5;
 
     useEffect(() => {
-        console.log(maxQuantity);
         if (maxQuantity === 0) {
             setItem({ id: id, quantity: 1 });
         }
