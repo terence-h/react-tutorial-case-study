@@ -6,18 +6,39 @@ import { CartContext } from '../contexts/CartContext';
 
 export default function ProductDetails({ id, name, specifications, price, path }) {
     const { loggedIn } = useContext(UserContext);
-    const { addToCart } = useContext(CartContext);
+    const { cart, addToCart } = useContext(CartContext);
     const [item, setItem] = useState({
         id: id,
         quantity: 1
     });
+    const [addedToCart, setAddedToCart] = useState(false);
+
+    const currentItem = cart.find((item) => item.id === id);
+    const maxQuantity = currentItem ? 5 - currentItem.quantity : 5;
+
+    useEffect(() => {
+        console.log(maxQuantity);
+        if (maxQuantity === 0) {
+            setItem({ id: id, quantity: 1 });
+        }
+        else if (item.quantity > maxQuantity) {
+            setItem({ id: id, quantity: maxQuantity })
+        }
+    }, [cart]);
 
     // Update the ID and reset the quantity to 1 when the ID changes, this is necessary if navigating into the same route but different parameter
     useEffect(() => {
         setItem({
             id: id, quantity: 1
         });
+        setAddedToCart(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
+
+    useEffect(() => {
+        if (addedToCart)
+            setTimeout(() => setAddedToCart(false), 2000);
+    }, [addedToCart]);
 
     return (
         <div className="container mx-auto px-16">
@@ -43,7 +64,7 @@ export default function ProductDetails({ id, name, specifications, price, path }
                                 -
                             </button>
                             <span className="text-gray-700 text-lg mx-2">{item.quantity}</span>
-                            <button className="border rounded-md py-2 px-4 mr-2 disabled:text-gray-300" disabled={item.quantity === 5}
+                            <button className="border rounded-md py-2 px-4 mr-2 disabled:text-gray-300" disabled={item.quantity === maxQuantity || maxQuantity === 0}
                                 onClick={() => setItem({ ...item, quantity: item.quantity + 1 })}>
                                 +
                             </button>
@@ -51,12 +72,14 @@ export default function ProductDetails({ id, name, specifications, price, path }
                         </div>
                     </div>
                     <div className="flex items-center mt-6">
-                        <button disabled={!loggedIn}
+                        <button disabled={!loggedIn || maxQuantity === 0}
                             className="px-8 py-2 bg-stone-600 text-white text-sm font-medium rounded hover:bg-stone-500 focus:outline-none focus:bg-stone-500 disabled:bg-stone-300"
-                            onClick={() => addToCart(item)}>Add To Cart
+                            onClick={() => { addToCart(item); setAddedToCart(true); }}>Add To Cart
                         </button>
                     </div>
+                    {addedToCart && <p className='text-green-600'>Added to cart successfully.</p>}
                     {!loggedIn && <p className='text-red-600'>You need to be logged in to add items to cart.</p>}
+                    {loggedIn && !addedToCart && maxQuantity === 0 && <p className='text-red-600'>You already reached the max quantity available to purchase in 1 order.</p>}
                 </div>
             </div>
             <div className="mt-16">
